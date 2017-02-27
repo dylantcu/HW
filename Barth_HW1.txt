@@ -1,0 +1,40 @@
+HOMEWORK 1
+Dylan Barth
+————————————
+
+1 a) 
+	Simply (integer) divide the number by 2, then store the remainder in the 
+	ones place of the binary output. Then keep dividing by 2, always storing the 
+	remainder in the next highest place. Stop when your number can be divided no 
+	more (when the number is 0). Use the first digit of the binary number as the 
+	sign for the number, 0 is positive, 1 is negative.
+
+2 a)
+	The speed at which an orbiting mass travels is 
+		v = (GM/r)^(1/2)
+	where G is the gravitational constant, M is the mass of the earth, and 
+	r is the radius from the center of gravity of the earth.
+		v^2 = GM/r
+		d^2/t^2 = GM/r
+		4pi^2r^2/t^2 = GM/r
+		4pi^2r^3/t^2 = GM
+		r^3 = GMt^2/4pi^2
+		r = (GMt^2/4pi^2)^(1/3)
+	Since r is the distance from the center of gravity, we can rewrite it as
+		r = R + h
+	where R and h are the radius of the earth and the height above that
+	respectively. Thus
+		h = (GMt^2/4pi^2)^(1/3) - R
+
+  c) 1 day orbit height: 35855.9 km
+     90 minute orbit height: 279.3 km
+     45 minute orbit height: -2181.6 km
+	a 45 minute orbit is not possible
+
+  d) Persidereal day orbit height: 35773.8 km
+	this is an 82 km difference in height from a 24 hour day.
+	the figure 24 hours is derived from our relation to the sun, from my
+	understanding, the earth actually rotates a little bit faster. This 
+	distinction is made because the earth is not just rotating, but is also
+	revolving around the sun, bringing the sunrise later than if we just take
+	earth’s rotation into account.
