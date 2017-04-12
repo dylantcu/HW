@@ -18,8 +18,8 @@ gif_method = 0 # 0|1
     #0 turns the gif maker off, 1 on.
 #steps and sizes
 start = 0.
-end =  10.
-N = 2000
+end =  20.
+N = 5000
 h = (end-start)/N
 #set up arrays for various computations
 tdata = numpy.arange(start,end,h)
@@ -44,6 +44,7 @@ def vector(r,t):
 
 #solve diff eq by Runge Kutta method
 if diff_method == "RK":
+    print("RK")
     for t in tdata:
         thetadata.append(r_0[0])
         omegadata.append(r_0[1])
@@ -54,13 +55,18 @@ if diff_method == "RK":
         r_0 += (k1 + k2 + k3 + k4)/6
 #solve diff eq by Leap Frog Method
 if diff_method == "LF": #doesnt work every time
-    r_0[1] = r_0[1] + 0.5*h*vector(r_0,tdata[0])[1]
+    print("LF")
     for t in tdata:
         thetadata.append(r_0[0])
         omegadata.append(r_0[1])
-        r_0[0] += h*vector(r_0*(t+0.5*h),t+0.5*h)[0]
-        r_0[1] += h*vector(r_0*(t+h),t+h)[1]
-        
+        if(t==tdata[0]):
+            k1 = h*vector(r_0,t) 
+            k2 = h*vector(r_0 + .5*k1,t + .5*h)
+            r_0 += (k2)
+        else:
+            k1 = h*vector(r_0,t) 
+            k2 = h*vector(r_0 + k1,t + h)
+            r_0 += (k2)
         
 #Get x,y coords for bob, line, and time for gif
 j = 0 #indexing variable
@@ -85,10 +91,9 @@ if gif_method == 1:
             p.plot(x_gifdata, y_gifdata, 'o', ms=15)
             p.savefig("gif_frames/" + str(j/2) + "pend.png")
             j += 2
-#p.plot(ltdata[50:],l_gifdata[10][50:])
 #plot  
 if gif_method==0:
-    print min(thetadata[500:600])
+    print min(thetadata[2500:])
     p.title("Angle of NonLinear Pendulum Over Time")
     p.xlabel("Time (s)")
     p.ylabel("Angle of Pendulum Arm (degrees)")
